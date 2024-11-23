@@ -1,0 +1,37 @@
+spring:
+  profiles:
+    default: "none"
+  application:
+    name: store
+  datasource:
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/store}
+    username: ${DB_USERNAME:store}
+    password: ${DB_PASSWORD:password}
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+
+  flyway:
+    enabled: true
+    validate-on-migrate: true
+    baseline-on-migrate: true
+    baseline-version: 0
+
+---
+
+spring:
+  config:
+    active:
+      on-profile: "test"
+
+  datasource:
+    url: jdbc:h2:mem:store
+    driverClassName: org.h2.Driver
