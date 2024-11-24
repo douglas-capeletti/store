@@ -4,44 +4,8 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - DB_URL=jdbc:postgresql://database:5432/store
-      - DB_USERNAME=store
-      - DB_PASSWORD=password
+      - DB_URL=${DB_URL}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
     ports:
       - "8080:9000"
-    depends_on:
-      - database
-    networks:
-      - db-network
-
-  dbConsole:
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: user@email.com
-      PGADMIN_DEFAULT_PASSWORD: pass
-    ports:
-      - "16543:8090"
-    networks:
-      - db-network
-    depends_on:
-      - database
-
-  database:
-    image: postgres:17
-    environment:
-      - POSTGRES_DB=store
-      - POSTGRES_USER=store
-      - POSTGRES_PASSWORD=password
-    ports:
-      - "5432"
-#    volumes:
-#      - db-data:/var/lib/postgresql/data
-    networks:
-      - db-network
-
-#volumes:
-#  db-data:
-#    driver: local
-networks:
-  db-network:
-    driver: bridge

@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "record_date": "2024-09-30",
+      "exchange_rate": "5.434",
+      "country": "Brazil",
+      "currency": "Real"
+    }
+  ],
+  "meta": {
+    "count": 1,
+    "labels": {
+      "record_date": "Record Date",
+      "exchange_rate": "Exchange Rate",
+      "country": "Country",
+      "currency": "Currency"
+    },
+    "dataTypes": {
+      "record_date": "DATE",
+      "exchange_rate": "NUMBER",
+      "country": "STRING",
+      "currency": "STRING"
+    },
+    "dataFormats": {
+      "record_date": "YYYY-MM-DD",
+      "exchange_rate": "10.2",
+      "country": "String",
+      "currency": "String"
+    },
+    "total-count": 1,
+    "total-pages": 1
+  },
+  "links": {
+    "self": "&page%5Bnumber%5D=1&page%5Bsize%5D=100",
+    "first": "&page%5Bnumber%5D=1&page%5Bsize%5D=100",
+    "prev": null,
+    "next": null,
+    "last": "&page%5Bnumber%5D=1&page%5Bsize%5D=100"
+  }
+}

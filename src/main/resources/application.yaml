@@ -1,6 +1,4 @@
 spring:
-  profiles:
-    default: "none"
   application:
     name: store
   datasource:
@@ -15,9 +13,10 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
 
   flyway:
     enabled: true
@@ -25,13 +24,8 @@ spring:
     baseline-on-migrate: true
     baseline-version: 0
 
----
-
-spring:
-  config:
-    active:
-      on-profile: "test"
-
-  datasource:
-    url: jdbc:h2:mem:store
-    driverClassName: org.h2.Driver
+integration:
+  client:
+    exchange-rate:
+      url: "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/rates_of_exchange"
+      filter: "&sort=-record_date&filter=country:eq:{0},record_date:gte:{1}"

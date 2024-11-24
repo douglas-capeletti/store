@@ -1,0 +1,53 @@
+services:
+  api:
+    container_name: api_dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DB_URL=jdbc:postgresql://database:5432/store
+      - DB_USERNAME=store
+      - DB_PASSWORD=password
+    ports:
+      - "9000:8080"
+    depends_on:
+      - database
+    networks:
+      - db-network
+
+  dbConsole:
+    container_name: dbConsole_dev
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@email.com
+      PGADMIN_DEFAULT_PASSWORD: pass
+    ports:
+      - "5000:80"
+    volumes:
+      - db_console_data:/var/lib/pgadmin
+    networks:
+      - db-network
+    depends_on:
+      - database
+
+  database:
+    container_name: database_dev
+    image: postgres:17
+    environment:
+      - POSTGRES_DB=store
+      - POSTGRES_USER=store
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - db-network
+
+volumes:
+  db_data:
+  db_console_data:
+
+networks:
+  db-network:
+    driver: bridge

@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "f0348a14-942b-4dd7-a9ca-d1571b39a56e",
+		"name": "Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28308882"
+	},
+	"item": [
+		{
+			"name": "New Purchase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"New purchase\",\r\n    \"amount\": 10,\r\n    \"transaction_date\": \"2024-10-31\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/api/v1/transactions/purchase"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Purchases",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/api/v1/transactions/purchase"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Purchase",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/v1/transactions/purchase/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Purchase with excahnge rate",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/api/v1/transactions/purchase/1/exchange-rate/country/Brazil"
+			},
+			"response": []
+		}
+	]
+}
